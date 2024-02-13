@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Title</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+   body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff758f; /* Softer pink color */
+        font-family: 'Pacifico', cursive; /* Romantic font for the whole body */
+      }
+      
+      .music-player {
+        background-color: #fce4ec; /* Light pink color for the player */
+        border-radius: 20px; /* Rounded corners */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); /* Material Design Shadow */
+        padding: 20px; /* Space around the player */
+        width: 90%; /* Responsive width */
+        max-width: 400px; /* Maximum width */
+        margin-bottom: 20px; /* Space from the bottom */
+        text-align: center; /* Centering the text */
+      }
+      audio {
+        width: 100%; /* Full width of the player */
+        margin-top: 15px; /* Space above the audio element */
+      }
+  .valentines-day-card {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: #ff8fa3;
+    overflow: hidden;
+    border:10px solid white;
+    border-radius:10px;
+    box-shadow: 0 0 100px rgba(0,0,0,.4);
+  }
+  button {
+        background-color: #ff6090; /* Button color */
+        border: none; /* No border */
+        padding: 10px 20px; /* Padding inside the buttons */
+        margin: 0 10px; /* Space between buttons */
+        border-radius: 50px; /* Rounded buttons */
+        color: white; /* Text color */
+        font-size: 16px; /* Text size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s; /* Transition for a smooth color change */
+      }
+      
+  .valentines-day-card:before {
+    content:"";
+    position: absolute;
+    background-color: #ffb3c1;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    top:140px;
+    left:-25px;
+    box-shadow:60px 20px #ffb3c1,130px 10px #ffb3c1, 190px 20px #ffb3c1,260px -5px #ffb3c1, 340px 20px #ffb3c1;
+  }
+  
+  .valentines-day-card:after {
+    content:"";
+    position: absolute;
+    background-color: #ffccd5;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    top:160px;
+    left:-40px;
+    box-shadow: 50px 20px #ffccd5,120px 40px #ffccd5, 200px 15px #ffccd5,260px 30px #ffccd5, 330px 30px #ffccd5,380px 10px #ffccd5;
+  }
+  
+  .clouds {
+    position: absolute;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background-color: #fff0f3;
+    z-index:5;
+    top:210px;
+    left:-20px;
+    box-shadow: 55px 30px #fff0f3, 125px 10px #fff0f3,175px 20px #fff0f3, 250px 10px #fff0f3, 320px 5px #fff0f3, 380px 10px #fff0f3;
+  }
+  
+  .hearts {
+    position: absolute;
+    z-index:2;
+  }
+  
+  .heartOne {
+    position: absolute;
+    left:100px;
+    top:250px;
+    animation: up 4s linear forwards 1s;
+  }
+  
+  .heartTwo {
+    position: absolute;
+    left:270px;
+    top:230px;
+    animation: up 5s linear forwards 1.8s;
+  }
+  
+  .heartThree {
+    position: absolute;
+    left:85px;
+    top:415px;
+    animation: up 5s linear forwards 3s;
+  }
+  
+  .heartFour {
+    position: absolute;
+    left:320px;
+    top:380px;
+    animation: upTwo 9s linear infinite 3.5s;
+  }
+  
+  .heartFive {
+    position: absolute;
+    left:150px;
+    top:400px;
+    animation: upTwo 13s linear infinite 4.5s;
+  }
+  
+  .right-side:before, .right-side:after {
+    position: absolute;
+    content:"";
+    transform-origin: left;
+    animation: move 1s ease infinite;
+  }
+  
+  .right-side:before {
+    border-radius:50% 50% 50% 0;
+    width:21px;
+    height:20px;
+    background-color: #c9184a;
+    left:-0.26px;
+  }
+  
+  .right-side:after {
+    height:0;
+    width:0;
+    border-bottom:10px solid transparent;
+    border-left: 15px solid #c9184a;
+    top:19px;
+    left:-0.26px;
+  }
+  
+  @keyframes move {
+    0%, 100% {transform: rotateY(0);}
+    50% {transform: rotateY(-45deg);}
+  }
+  
+  .left-side:before, .left-side:after {
+    position: absolute;
+    content:"";
+    transform-origin: right;
+    animation: move 1s ease infinite;
+  }
+  
+  .left-side:before {
+    border-radius:50% 50% 0 50%;
+    width:20px;
+    height:20px;
+    left:-20.7px;
+    background-color: #ff4d6d;
+  }
+  
+  .left-side:after {
+    height:0;
+    width:0;
+    left:-15px;
+    border-bottom:10px solid transparent;
+    border-right: 15px solid #ff4d6d;
+    top:19px;
+  }
+  
+  @keyframes up {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-200px);}
+  }
+  
+  @keyframes upTwo {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-450px);}
+  }
+  
+  .text {
+    position: absolute;
+    color: #800f2f;
+    font-size:30px;
+    font-family: 'Pacifico', cursive;
+    line-height:1;
+    text-align: center;
+    width:380px;
+    left:10px;
+    z-index:3;
+    top:320px;
+    animation: up 1s ease forwards;
+    transition: .2s;
+  }
+  
+  .hover {
+    color: white;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+  }
+  
+  /* .text:hover span {
+    display: none;
+  } */
+  
+  /* .text:hover:before {
+    content:"Wishing you a heartfelt and love-filled Valentine's Day!";
+    font-size:25px;
+  
+  }
+   */
+   button:hover {
+        background-color: #ff80ab; /* Lighter color on hover */
+      }
+      
+      footer {
+        color: #ff80ab; /* Footer text color */
+        background: transparent; /* No background color */
+        position: absolute; /* Absolute positioning */
+        bottom: 10px; /* Space from the bottom */
+        width: 100%; /* Full width */
+        text-align: center; /* Centering the footer text */
+      }
+      
+      footer h4 {
+        margin: 0; /* No margin to fix spacing */
+      }
+    </style> 
+</head>
+<body>
+<div class="happy-valentines">
+    <div class="valentines-day-card">
+        <div class="clouds"></div>
+        <div class="hearts">
+            <div class="heartOne">
+                <div class="left-side"></div>
+                <div class="right-side"></div>
+            </div>
+            <div class="heartTwo">
+                <div class="left-side"></div>
+                <div class="right-side"></div>
+            </div>
+            <div class="heartThree">
+                <div class="left-side"></div>
+                <div class="right-side"></div>
+            </div>
+            <div class="heartFour">
+                <div class="left-side"></div>
+                <div class="right-side"></div>
+            </div>
+            <div class="heartFive">
+                <div class="left-side"></div>
+                <div class="right-side"></div>
+            </div>
+        </div>
+        <div class="text"><span id="phrase">Happy Valentine's</br> Day My Love!</span></div>
+    </div>
+    <div class="music-player">
+      <audio id="musicPlayer" controls autoplay>
+        <source src="musics/Jah Khalib - Колыбельная.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div>
+        <button onclick="previousTrack()">Previous</button>
+        <button id="start" onclick="nextTrack()">Next</button>
+      </div>
+    </div>
+    <!-- <p class="hover">- hover over the text -</p> -->
+</div>
+
+<footer>
+    <h4>Created by You</h4>
+</footer>
+
+<script>
+    // Define lovely phrases array
+    const lovelyPhrases = [
+    // Kyrgyz
+    "Сен жакшысың, менің жүрөгүмдө ар дайым.",
+    "Сен мен үчүн маанилүүсүң.",
+    "Сен менен бирге болгон убакытты баалайм.",
+    "Сен мага ырахат бересиң.",
+    "Сенин жылмайышың күнүмдү жарыктандырат.",
+    "Сен менен болгон баардык мезгилди баалайм.",
+    "Сенин болушуң маанилүү.",
+    "Сен менин шыктандыруучумсуң.",
+    "Сенин күлкүң мени кубандырат.",
+    "Сенин жардамың үчүн ыраазымын.",
+    
+    // Russian
+    "Ты приносишь радость в мою жизнь.",
+    "Ты значишь для меня много.",
+    "Ты освещаешь мои дни.",
+    "Ты вдохновляешь меня.",
+    "Ты - источник моего вдохновения.",
+    "Ты делаешь мой мир лучше.",
+    "Ты - особенный человек в моей жизни.",
+    "Ты - символ заботы и тепла.",
+    "Ты - направляющий свет в моей жизни.",
+    "Ты важная часть моей жизни.",
+    
+    // English
+    "You're incredible, and always on my mind.",
+    "You add brightness to my days.",
+    "Your presence is uplifting.",
+    "You're an important part of my life.",
+    "I value the times we spend together.",
+    "I'm thankful for your efforts.",
+    "You bring light into my life.",
+    "Your cheerfulness is infectious.",
+    "I'm thankful for your gentle nature.",
+    "Your smile brightens my day."
+];
+
+
+    // Function to get a random phrase from the array
+    function getRandomPhrase() {
+        return lovelyPhrases[Math.floor(Math.random() * lovelyPhrases.length)];
+    }
+
+    // Function to update the phrase periodically
+    function updatePhrase() {
+        const phraseElement = document.getElementById("phrase");
+        phraseElement.textContent = getRandomPhrase();
+    }
+
+    // Update the phrase initially
+    updatePhrase();
+
+    // Update the phrase every 3 seconds
+    setInterval(updatePhrase, 3000);
+
+    const tracks = [
+      "musics/Jah Khalib - Колыбельная.mp3",
+      "musics/George Michael - Careless Whisper.mp3",
+      "musics/John Legend - All of Me.mp3",
+      "musics/Nelly - Just A Dream.mp3",
+      "musics/Мирбек Атабеков - Кечки Бишкек.mp3",
+      "musics/Мирбек Атабеков - Суранамын кечир мени.mp3",
+      "musics/Мот - Капкан.mp3",
+      "musics/Скриптонит - Космос.mp3"
+        // Add more tracks as needed
+    ];
+
+    let currentTrackIndex = 0;
+    const player = document.getElementById('musicPlayer');
+
+    player.addEventListener('ended', nextTrack);
+
+    function nextTrack() {
+        currentTrackIndex++;
+        if (currentTrackIndex >= tracks.length) {
+            currentTrackIndex = 0;
+        }
+        player.src = tracks[currentTrackIndex];
+        player.play();
+    }
+
+    function previousTrack() {
+        currentTrackIndex--;
+        if (currentTrackIndex < 0) {
+            currentTrackIndex = tracks.length - 1;
+        }
+        player.src = tracks[currentTrackIndex];
+        player.play();
+    }
+
+    // Autoplay the first track on load
+    player.src = tracks[0];
+    player.play();
+
+</script>
+</body>
+</html>
