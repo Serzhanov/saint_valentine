@@ -238,7 +238,14 @@
       
       footer h4 {
         margin: 0; /* No margin to fix spacing */
+        color: white;
       }
+      .song-name {
+        color: black; /* Color of the song name */
+        margin: 10px 0; /* Spacing around the song name */
+        font-size: 18px; /* Font size of the song name */
+      }
+
     </style> 
 </head>
 <body>
@@ -274,6 +281,7 @@
         <source src="musics/Jah Khalib - Колыбельная.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
+      <div class="song-name" id="songName">Jah Khalib - Колыбельная 🎵</div>
       <div>
         <button onclick="previousTrack()">Previous</button>
         <button onclick="nextTrack()">Next</button>
@@ -283,7 +291,7 @@
 </div>
 
 <footer>
-    <h4>Created by You</h4>
+    <h4>Aiz...</h4>
 </footer>
 
 <script>
@@ -348,8 +356,22 @@
     updatePhrase();
 
     // Update the phrase every 3 seconds
-    setInterval(updatePhrase, 3000);
-
+    setInterval(updatePhrase, 2800);
+    
+    const songNames = [
+          "Jah Khalib - Колыбельная 🎵",
+          "George Michael - Careless Whisper 🎷",
+          "Мирбек Атабеков - Кечки Бишкек 🌃",
+          "Мот - Капкан 💔",
+          "Скриптонит - Космос 🚀",
+          "Мирбек Атабеков - Суранамын кечир мени 💖",
+          // Add more song names as needed
+        ];
+      // Function to update the song name
+    function updateSongName() {
+          const songNameElement = document.getElementById("songName");
+          songNameElement.textContent = songNames[currentTrackIndex];
+      }
     const tracks = [
       "musics/Jah Khalib - Колыбельная.mp3",
       "musics/George Michael - Careless Whisper.mp3",
@@ -373,6 +395,7 @@
         console.log(currentTrackIndex)
         player.src = tracks[currentTrackIndex];
         player.play();
+        updateSongName(); 
     }
 
     function previousTrack() {
@@ -382,6 +405,7 @@
         }
         player.src = tracks[currentTrackIndex];
         player.play();
+        updateSongName(); 
     }
 
     // Autoplay the first track on load
