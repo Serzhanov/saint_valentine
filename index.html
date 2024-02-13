@@ -14,6 +14,7 @@
         justify-content: center;
         background-color: #ff758f; /* Softer pink color */
         font-family: 'Pacifico', cursive; /* Romantic font for the whole body */
+        font-size: 20px;
       }
       
       .music-player {
@@ -275,7 +276,7 @@
       </audio>
       <div>
         <button onclick="previousTrack()">Previous</button>
-        <button id="start" onclick="nextTrack()">Next</button>
+        <button onclick="nextTrack()">Next</button>
       </div>
     </div>
     <!-- <p class="hover">- hover over the text -</p> -->
@@ -289,47 +290,53 @@
     // Define lovely phrases array
     const lovelyPhrases = [
     // Kyrgyz
-    "Сен жакшысың, менің жүрөгүмдө ар дайым.",
-    "Сен мен үчүн маанилүүсүң.",
-    "Сен менен бирге болгон убакытты баалайм.",
-    "Сен мага ырахат бересиң.",
-    "Сенин жылмайышың күнүмдү жарыктандырат.",
-    "Сен менен болгон баардык мезгилди баалайм.",
-    "Сенин болушуң маанилүү.",
-    "Сен менин шыктандыруучумсуң.",
-    "Сенин күлкүң мени кубандырат.",
-    "Сенин жардамың үчүн ыраазымын.",
-    
+    "Жашоомдо сенин ролуң чоң.",
+    "Сенин мээримиң баардык нерсени жеңилдетет.",
+    "Сен өзгөчөсүң, жана бул менин үчүн маанилүү.",
+    "Сенин оюңдар мен үчүн кызыктуу.",
+    "Сенин күч-кубатың мени кубандырат.",
+    "Сени менен болгон ар бир сүйлөшүү маанилүү.",
+    "Сенин кайраттуулугуң мени өрнөктөйт.",
+    "Сенин бакытты көз карашың менин көңүлүмдү көтөрөт.",
+    "Сенин дүйнө таанымың мен үчүн өтө кызыктуу.",
+    "Сен менин жүрөгүмдү жылытасың.",
+
     // Russian
-    "Ты приносишь радость в мою жизнь.",
-    "Ты значишь для меня много.",
-    "Ты освещаешь мои дни.",
-    "Ты вдохновляешь меня.",
-    "Ты - источник моего вдохновения.",
-    "Ты делаешь мой мир лучше.",
-    "Ты - особенный человек в моей жизни.",
-    "Ты - символ заботы и тепла.",
-    "Ты - направляющий свет в моей жизни.",
-    "Ты важная часть моей жизни.",
-    
+    "Твоя улыбка делает мир ярче.",
+    "Ты приносишь мир в мою жизнь.",
+    "Твоя уверенность вдохновляет меня.",
+    "Ты уникальный человек с красивой душой.",
+    "Твоя мудрость делает меня лучше.",
+    "Ты заставляешь меня чувствовать себя особенным.",
+    "Твое присутствие успокаивает меня.",
+    "Твои слова всегда ободряют меня.",
+    "Твое чувство юмора делает каждый день веселее.",
+    "Твоя творческая натура вдохновляет меня.",
+
     // English
-    "You're incredible, and always on my mind.",
-    "You add brightness to my days.",
-    "Your presence is uplifting.",
-    "You're an important part of my life.",
-    "I value the times we spend together.",
-    "I'm thankful for your efforts.",
-    "You bring light into my life.",
-    "Your cheerfulness is infectious.",
-    "I'm thankful for your gentle nature.",
-    "Your smile brightens my day."
+    "Your wisdom always guides me.",
+    "You have a heart of gold.",
+    "Your creativity is contagious.",
+    "You make the ordinary extraordinary.",
+    "Your strength is an inspiration.",
+    "Your kindness makes the world a better place.",
+    "Your laughter is my favorite sound.",
+    "Your perspective is always enlightening.",
+    "Your courage in facing challenges is admirable.",
+    "Your passion for life is invigorating."
 ];
 
+  let lastSelectedIndex = -1;
 
-    // Function to get a random phrase from the array
-    function getRandomPhrase() {
-        return lovelyPhrases[Math.floor(Math.random() * lovelyPhrases.length)];
-    }
+  function getRandomPhrase() {
+      let randomIndex;
+      do {
+          randomIndex = Math.floor(Math.random() * lovelyPhrases.length);
+      } while (randomIndex === lastSelectedIndex);
+      
+      lastSelectedIndex = randomIndex;
+      return lovelyPhrases[randomIndex];
+  }
 
     // Function to update the phrase periodically
     function updatePhrase() {
@@ -346,12 +353,10 @@
     const tracks = [
       "musics/Jah Khalib - Колыбельная.mp3",
       "musics/George Michael - Careless Whisper.mp3",
-      "musics/John Legend - All of Me.mp3",
-      "musics/Nelly - Just A Dream.mp3",
       "musics/Мирбек Атабеков - Кечки Бишкек.mp3",
-      "musics/Мирбек Атабеков - Суранамын кечир мени.mp3",
       "musics/Мот - Капкан.mp3",
-      "musics/Скриптонит - Космос.mp3"
+      "musics/Скриптонит - Космос.mp3",
+      "musics/Мирбек Атабеков - Суранамын кечир мени.mp3",
         // Add more tracks as needed
     ];
 
@@ -365,6 +370,7 @@
         if (currentTrackIndex >= tracks.length) {
             currentTrackIndex = 0;
         }
+        console.log(currentTrackIndex)
         player.src = tracks[currentTrackIndex];
         player.play();
     }
